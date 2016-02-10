@@ -773,8 +773,8 @@ int DrmDisplayCompositor::CommitFrame(DrmDisplayComposition *display_comp,
 
     if (plane->rotation_property().id()) {
       ret = drmModeAtomicAddProperty(pset, plane->id(),
-                                     plane->rotation_property().id(), rotation);
-      if (ret < 0) {
+                                     plane->rotation_property().id(), rotation) < 0;
+      if (ret) {
         ALOGE("Failed to add rotation property %d to plane %d",
               plane->rotation_property().id(), plane->id());
         break;
@@ -783,8 +783,8 @@ int DrmDisplayCompositor::CommitFrame(DrmDisplayComposition *display_comp,
 
     if (plane->alpha_property().id()) {
       ret = drmModeAtomicAddProperty(pset, plane->id(),
-                                     plane->alpha_property().id(), alpha);
-      if (ret < 0) {
+                                     plane->alpha_property().id(), alpha) < 0;
+      if (ret) {
         ALOGE("Failed to add alpha property %d to plane %d",
               plane->alpha_property().id(), plane->id());
         break;
