@@ -30,8 +30,8 @@ LOCAL_SHARED_LIBRARIES := \
 
 
 LOCAL_C_INCLUDES := \
-	external/libdrm \
-	external/libdrm/include/drm \
+	external/drm \
+	external/drm/include/drm \
 	system/core/include/utils \
 	system/core/libsync \
 	system/core/libsync/include \
@@ -61,12 +61,12 @@ ifeq ($(strip $(BOARD_DRM_HWCOMPOSER_BUFFER_IMPORTER)),nvidia-gralloc)
 LOCAL_SRC_FILES += nvimporter.cpp
 LOCAL_CPPFLAGS += -DUSE_NVIDIA_IMPORTER
 else
-LOCAL_C_INCLUDES += external/drm_gralloc
+LOCAL_C_INCLUDES += hardware/drm_gralloc
 LOCAL_SRC_FILES += drmgenericimporter.cpp
 LOCAL_CPPFLAGS += -DUSE_DRM_GENERIC_IMPORTER
 endif
 
-LOCAL_MODULE := hwcomposer.drm
+LOCAL_MODULE := hwcomposer.rpi2b
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
